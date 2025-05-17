@@ -25,8 +25,6 @@ app.post('/entries', async (req, res) => {
   }
 
   await db.read();
-  // Simple “upsert” (replace if same id)
-  db.data.entries = db.data.entries.filter(e => e.id !== id);
   db.data.entries.push({ id, emoji, answers });
   await db.write();
 
